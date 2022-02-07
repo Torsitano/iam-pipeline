@@ -38,13 +38,14 @@ junit.xml
 !/.github/workflows/build.yml
 !/.mergify.yml
 !/.github/pull_request_template.md
+!/.prettierignore
+!/.prettierrc.json
 !/test/
 !/tsconfig.json
 !/tsconfig.dev.json
 !/src/
 /lib
 /dist/
-!/.eslintrc.json
 /assets/
 !/cdk.json
 /cdk.out/
