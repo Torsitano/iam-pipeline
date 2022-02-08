@@ -2,7 +2,7 @@ const { awscdk } = require('projen');
 const project = new awscdk.AwsCdkTypeScriptApp({
     author: 'Shawn Torsitano',
     authorAddress: 'shawn.torsitano@gmail.com',
-    cdkVersion: '2.9.0',
+    cdkVersion: '2.10.0',
     defaultReleaseBranch: 'main',
     name: 'iam-pipeline',
     eslint: false,
