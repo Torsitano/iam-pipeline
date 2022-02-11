@@ -201,10 +201,10 @@
           "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='projen'"
         },
         {
-          "exec": "yarn install --check-files"
+          "exec": "npm install"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node aws-cdk esbuild jest jest-junit npm-check-updates prettier ts-jest ts-node typescript aws-cdk-lib constructs"
+          "exec": "npm update @types/jest @types/node aws-cdk esbuild jest jest-junit npm-check-updates prettier ts-jest ts-node typescript @types/js-yaml aws-cdk-lib constructs js-yaml"
         },
         {
           "exec": "npx projen"
@@ -237,10 +237,10 @@
           "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen'"
         },
         {
-          "exec": "yarn install --check-files"
+          "exec": "npm install"
         },
         {
-          "exec": "yarn upgrade projen"
+          "exec": "npm update projen"
         },
         {
           "exec": "npx projen"
