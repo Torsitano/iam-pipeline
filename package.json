@@ -1,6 +1,7 @@
 {
   "name": "iam-pipeline",
   "bin": {
+    "IamDefinitionParse.ts": "bin/IamDefinitionParse.ts",
     "SchemaConverter.ts": "bin/SchemaConverter.ts"
   },
   "scripts": {
