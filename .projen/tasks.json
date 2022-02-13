@@ -204,7 +204,7 @@
           "exec": "npm install"
         },
         {
-          "exec": "npm update @types/jest @types/node aws-cdk esbuild jest jest-junit npm-check-updates prettier ts-jest ts-node typescript @types/js-yaml aws-cdk-lib constructs js-yaml"
+          "exec": "npm update @types/jest @types/node aws-cdk esbuild jest jest-junit json-schema-to-typescript npm-check-updates prettier ts-jest ts-node typescript @types/js-yaml ajv aws-cdk-lib constructs js-yaml"
         },
         {
           "exec": "npx projen"

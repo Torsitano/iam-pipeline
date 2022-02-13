@@ -1,5 +1,8 @@
 {
   "name": "iam-pipeline",
+  "bin": {
+    "SchemaConverter.ts": "bin/SchemaConverter.ts"
+  },
   "scripts": {
     "build": "npx projen build",
     "bundle": "npx projen bundle",
@@ -32,6 +35,7 @@
     "esbuild": "^0.14.19",
     "jest": "^27.5.0",
     "jest-junit": "^13",
+    "json-schema-to-typescript": "^10.1.5",
     "npm-check-updates": "^12",
     "prettier": "^2.5.1",
     "projen": "^0.52.17",
@@ -41,6 +45,7 @@
   },
   "dependencies": {
     "@types/js-yaml": "*",
+    "ajv": "^8.10.0",
     "aws-cdk-lib": "^2.12.0",
     "constructs": "^10.0.5",
     "js-yaml": "^4.1.0"

@@ -28,6 +28,10 @@
       "type": "build"
     },
     {
+      "name": "json-schema-to-typescript",
+      "type": "build"
+    },
+    {
       "name": "npm-check-updates",
       "version": "^12",
       "type": "build"
@@ -55,6 +59,10 @@
     },
     {
       "name": "@types/js-yaml",
+      "type": "runtime"
+    },
+    {
+      "name": "ajv",
       "type": "runtime"
     },
     {
