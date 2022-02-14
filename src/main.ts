@@ -1,6 +1,6 @@
 import { App } from 'aws-cdk-lib';
 import { PipelineStack } from './PipelineStack';
-import { LintingStack } from './LintingStack'
+// import { LintingStack } from './LintingStack'
 
 
 
@@ -12,7 +12,7 @@ const devEnv = {
 
 const app = new App();
 
-new LintingStack(app, 'linting-stack', { env: devEnv });
+// new LintingStack(app, 'linting-stack', { env: devEnv });
 new PipelineStack(app, 'pipeline-stack', { env: devEnv });
 
 app.synth();
