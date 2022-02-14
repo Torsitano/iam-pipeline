@@ -66,6 +66,9 @@
         "minProperties": 1,
         "additionalProperties": false
       },
+      "Resources": {
+          "type": "object"
+      },
       "CommonParams": {
         "properties": {
           "Description": {
@@ -368,7 +371,7 @@
       },
       "Resources": {
         "description": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html",
-        "$ref": "#/definitions/resources"
+        "$ref": "#/definitions/Resources"
       },
       "Hooks": {
         "description": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/blue-green.html",
@@ -379,8 +382,5 @@
         "type": "object"
       }
     },
-    "description": "My Description",
-    "required": [
-      "Resources"
-    ]
+    "description": "My Description"
   }

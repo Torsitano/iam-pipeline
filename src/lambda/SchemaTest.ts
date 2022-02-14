@@ -3,7 +3,7 @@
 import Ajv from 'ajv'
 
 //
-import schema from '../CfnSpecifications/aws-iam-role.json'
+import schema from '../Schemas/cfn-schema/template-schema.json'
 import template from '../../test/test-template.json'
 
 const ajv = new Ajv({ allErrors: true, strict: false })
