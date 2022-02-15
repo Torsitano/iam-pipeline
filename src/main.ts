@@ -13,6 +13,6 @@ const devEnv = {
 const app = new App();
 
 // new LintingStack(app, 'linting-stack', { env: devEnv });
-new PipelineStack(app, 'pipeline-stack', { env: devEnv });
+new PipelineStack(app, 'PipelineStack', { env: devEnv });
 
 app.synth();
