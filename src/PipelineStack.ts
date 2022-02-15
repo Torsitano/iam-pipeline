@@ -12,7 +12,7 @@ export class PipelineStack extends Stack {
                     connectionArn: 'arn:aws:codestar-connections:us-east-1:698852667105:connection/9c887503-78c4-4111-9cb4-6d2b3854016e'
                 }),
                 commands: [
-                    "npm i npm@latest -g"
+                    "npm i npm@latest -g",
                     'npm ci',
                     'npm run build',
                     'npx cdk synth'
