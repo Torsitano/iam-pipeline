@@ -1,5 +1,6 @@
-import { App } from 'aws-cdk-lib';
-import { PipelineStack } from './PipelineStack';
+import { App } from 'aws-cdk-lib'
+import { PipelineStack } from './PipelineStack'
+// import { DeploymentRolesStackSet } from './DeploymentRolesStackSet'
 // import { LintingStack } from './LintingStack'
 
 
@@ -8,11 +9,19 @@ import { PipelineStack } from './PipelineStack';
 const devEnv = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
   region: process.env.CDK_DEFAULT_REGION,
-};
+}
 
-const app = new App();
+// const masterEnv = {
+//     account: process.env.CDK_DEFAULT_ACCOUNT,
+//     region: process.env.CDK_DEFAULT_REGION,
+// }
 
-// new LintingStack(app, 'linting-stack', { env: devEnv });
-new PipelineStack(app, 'PipelineStack', { env: devEnv });
+const app = new App()
 
-app.synth();
+
+// new DeploymentRolesStackSet(app, 'DeploymentRolesStack', { env: masterEnv })
+
+// new LintingStack(app, 'linting-stack', { env: devEnv })
+new PipelineStack(app, 'PipelineStack', { env: devEnv })
+
+app.synth()

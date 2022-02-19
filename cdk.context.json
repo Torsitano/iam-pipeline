@@ -1,0 +1,40 @@
+{
+  "vpc-provider:account=698852667105:filter.isDefault=false:filter.vpc-id=vpc-0c092c3e6353dddfe:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0c092c3e6353dddfe",
+    "vpcCidrBlock": "10.0.0.0/16",
+    "availabilityZones": [],
+    "vpnGatewayId": "vgw-0df01746fce2e7ee0",
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-00a2b06f7dc726f39",
+            "cidr": "10.0.2.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0a5b69440a4e9cfd2"
+          },
+          {
+            "subnetId": "subnet-066e53cb2b227212e",
+            "cidr": "10.0.1.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0a5b69440a4e9cfd2"
+          }
+        ]
+      },
+      {
+        "name": "Isolated",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-05ff604c1d08059c2",
+            "cidr": "10.0.3.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-08f8b53e04fa984a8"
+          }
+        ]
+      }
+    ]
+  }
+}
