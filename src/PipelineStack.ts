@@ -7,7 +7,7 @@ import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 export class PipelineStack extends Stack {
     constructor(scope: Construct, id: string, props: StackProps = {}) {
         super(scope, id, props);
-        const env = props.env
+        
 
         const pipeline = new CodePipeline(this, "Pipeline", {
             pipelineName: 'IAM-Pipeline',
