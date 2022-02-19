@@ -6,10 +6,11 @@ import { Effect, Policy, PolicyStatement, Role, ServicePrincipal } from 'aws-cdk
 import { Repository } from "aws-cdk-lib/aws-ecr";
 
 
-
 export class FargateStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps){
         super(scope, id, props)
+
+        
 
         const vpc = Vpc.fromLookup(this, 'MyVPC', {
             vpcId: 'vpc-0c092c3e6353dddfe',

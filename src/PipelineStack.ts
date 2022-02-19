@@ -8,6 +8,7 @@ export class PipelineStack extends Stack {
     constructor(scope: Construct, id: string, props: StackProps = {}) {
         super(scope, id, props);
         const env = props.env
+
         const pipeline = new CodePipeline(this, "Pipeline", {
             pipelineName: 'IAM-Pipeline',
             synthCodeBuildDefaults: {
@@ -32,9 +33,7 @@ export class PipelineStack extends Stack {
         });
 
 
-        pipeline.addStage(new FargateTaskStage(this, 'fargateAddStage', {
-            env
-        }))
+        pipeline.addStage(new FargateTaskStage(this, 'fargateAddStage'))
 
 
     }

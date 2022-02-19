@@ -5,9 +5,12 @@ import { FargateStack } from '../ecs/FargateStack'
 export class FargateTaskStage extends Stage {
     constructor(scope: Construct, id: string, props?: StageProps) {
         super(scope, id, props)
-        const env = props?.env
+
         new FargateStack(this, 'fargateStack', {
-            env
-        } )
+            env: {
+                account: '698852667105',
+                region: 'us-east-1'
+            }
+        })
     }
 }
