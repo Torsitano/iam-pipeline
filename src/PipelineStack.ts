@@ -2,12 +2,26 @@ import { FargateTaskStage } from './Stages/FargateStage';
 import { Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { CodePipeline, CodePipelineSource, ShellStep } from "aws-cdk-lib/pipelines";
+import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export class PipelineStack extends Stack {
     constructor(scope: Construct, id: string, props: StackProps = {}) {
         super(scope, id, props);
-
+        const env = props.env
         const pipeline = new CodePipeline(this, "Pipeline", {
+            pipelineName: 'IAM-Pipeline',
+            synthCodeBuildDefaults: {
+                rolePolicy: [
+                    new PolicyStatement({
+                        effect: Effect.ALLOW,
+                        actions: [
+                            'ec2:List*',
+                            'ec2:Get*'
+                        ],
+                        resources: ['*']
+                    })
+                ]
+            },
             synth: new ShellStep("Synth", {
                 input: CodePipelineSource.connection("Torsitano/iam-pipeline", "main", {
                     connectionArn:
@@ -19,10 +33,7 @@ export class PipelineStack extends Stack {
 
 
         pipeline.addStage(new FargateTaskStage(this, 'fargateAddStage', {
-            env: {
-                account: '698852667105',
-                region: 'us-east-1'
-            }
+            env
         }))
 
 

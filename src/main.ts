@@ -7,8 +7,8 @@ import { PipelineStack } from './PipelineStack'
 
 // for development, use account/region from cdk cli
 const devEnv = {
-  account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION,
+  account: '698852667105',
+  region: 'us-east-1',
 }
 
 // const masterEnv = {
