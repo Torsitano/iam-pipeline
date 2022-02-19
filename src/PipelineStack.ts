@@ -20,8 +20,8 @@ export class PipelineStack extends Stack {
 
         pipeline.addStage(new FargateTaskStage(this, 'fargateAddStage', {
             env: {
-                account: process.env.CDK_DEFAULT_ACCOUNT,
-                region: process.env.CDK_DEFAULT_REGION
+                account: '698852667105',
+                region: 'us-east-1'
             }
         }))
 
