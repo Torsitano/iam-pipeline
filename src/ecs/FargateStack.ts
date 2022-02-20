@@ -36,10 +36,12 @@ export class FargateStack extends Stack {
             vpc
         })
 
+        
+        const repository = Repository.fromRepositoryName(this, 'my-repo', 'my-repo')
 
-        const repository = new Repository(this, 'my-repo', {
-            repositoryName: 'my-repo'
-        })
+        // const repository = new Repository(this, 'my-repo', {
+        //     repositoryName: 'my-repo'
+        // })
 
         const taskRole = new Role(this, 'task-role', {
             assumedBy: new ServicePrincipal('ecs-tasks.amazonaws.com'),
