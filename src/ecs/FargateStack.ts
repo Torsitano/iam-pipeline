@@ -24,7 +24,8 @@ export class FargateStack extends Stack {
         })
 
         fargateSg.addIngressRule(
-            Peer.ipv4('136.56.58.162/32'),
+            //Peer.ipv4('136.56.58.162/32'),
+            Peer.anyIpv4(),
             Port.allTraffic(),
             'Allow all traffic from home'            
             )
@@ -54,7 +55,9 @@ export class FargateStack extends Stack {
                         actions: [
                             'iam:*',
                             'organizations:*',
-                            'account:*'
+                            'account:*',
+                            'logs:*',
+                            'cloudwatch:*'
                         ],
                         resources: ['*']
                     })
@@ -76,12 +79,15 @@ export class FargateStack extends Stack {
         taskDefinition.addContainer('container', {
             image: RepositoryImage.fromEcrRepository(repository, "latest"),
             memoryLimitMiB: 512,
+            portMappings: [{
+                containerPort: 80
+            } ],
             logging: LogDriver.awsLogs({
                 streamPrefix: 'ecs-test-logs'
             })
         })
 
-        new FargateService(this, 'service', {
+        const fargateService = new FargateService(this, 'service', {
             cluster,
             desiredCount: 1,
             taskDefinition,
@@ -89,6 +95,15 @@ export class FargateStack extends Stack {
                 fargateSg
             ],
             assignPublicIp: true
+        })
+
+        const scalableTarget = fargateService.autoScaleTaskCount({
+            minCapacity: 0,
+            maxCapacity: 2
+        })
+
+        scalableTarget.scaleOnCpuUtilization('ScaleUpCpu', {
+            targetUtilizationPercent: 75
         })
 
 
