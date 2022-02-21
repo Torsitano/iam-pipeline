@@ -48,6 +48,7 @@
     "@types/js-yaml": "*",
     "ajv": "^8.10.0",
     "aws-cdk-lib": "^2.12.0",
+    "cdk-ecr-deployment": "^2.1.4",
     "constructs": "^10.0.5",
     "js-yaml": "^4.1.0"
   },

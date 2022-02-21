@@ -4,7 +4,9 @@ import { Cluster, Compatibility, FargateService, LogDriver, NetworkMode, Reposit
 import { Peer, Port, SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2'
 import { Effect, Policy, PolicyStatement, Role, ServicePrincipal } from 'aws-cdk-lib/aws-iam'
 import { Repository } from "aws-cdk-lib/aws-ecr";
-
+import { DockerImageAsset } from "aws-cdk-lib/aws-ecr-assets";
+import * as path from 'path'
+import { DockerImageName, ECRDeployment } from 'cdk-ecr-deployment'
 
 export class FargateStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps){
@@ -37,11 +39,21 @@ export class FargateStack extends Stack {
         })
 
         
-        const repository = Repository.fromRepositoryName(this, 'my-repo', 'my-repo')
+        // const repository = Repository.fromRepositoryName(this, 'my-repo', 'my-repo')
 
-        // const repository = new Repository(this, 'my-repo', {
-        //     repositoryName: 'my-repo'
-        // })
+        const repository = new Repository(this, 'iam-pipeline-repo', {
+            repositoryName: 'iam-pipeline-repo'
+        })
+
+        const dockerImage = new DockerImageAsset(this, 'IamPipelineImage', {
+            directory: path.join(__dirname, '../Docker')
+        })
+
+        
+        new ECRDeployment(this, 'PublishDockerImage', {
+            src: new DockerImageName(dockerImage.imageUri),
+            dest: new DockerImageName(repository.repositoryUri)
+        })
 
         const taskRole = new Role(this, 'task-role', {
             assumedBy: new ServicePrincipal('ecs-tasks.amazonaws.com'),
@@ -91,7 +103,7 @@ export class FargateStack extends Stack {
 
         const fargateService = new FargateService(this, 'service', {
             cluster,
-            desiredCount: 1,
+            desiredCount: 0,
             taskDefinition,
             securityGroups: [
                 fargateSg
